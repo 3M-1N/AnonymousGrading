@@ -16,6 +16,7 @@ will be able to provide a demonstration video for their project that will be aut
 for a limited period of time. Once the members of the jury are selected 
 
 #TO-DO:
+
 Cristina - UI Design
 
 Laur - Verifica prezentari + Intereseaza-te de Storage
