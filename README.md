@@ -2,10 +2,11 @@
 
 Group: 1093
 
-Members: Mateescu Razvan, Mazzini Sebastian-, Miron Cristina, Naum Laurentiu
+Members: Mateescu Razvan, Mazzini Sebastian, Miron Cristina, Naum Laurentiu
 
 # Planning
   - The users will be able to sign up/log in. all the accounts are going to be stored in a database and the passwords will be encrypted.
+  <img src= https://github.com/3M-1N/AnonymousGrading/blob/main/Documents/ProjectUI/login.jpeg>
   
   - There will be the possibility of creating a professor account that will only be able to see all the projects and the grades, but not who graded them. The professor will be able to assign students to project teams.
   
