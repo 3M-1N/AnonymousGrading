@@ -15,7 +15,7 @@ will be able to provide a demonstration video for their project that will be aut
   - The jury consists of 6 randomly chosen members. Only the members of the jury can add grades, and the grades can only be modified by their owners but only 
 for a limited period of time. Once the members of the jury are selected 
 
-#TO-DO:
+# TO-DO:
 
 Cristina - UI Design
 
