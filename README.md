@@ -17,7 +17,10 @@ for a limited period of time. Once the members of the jury are selected
 
 #TO-DO:
 Cristina - UI Design
+
 Laur - Verifica prezentari + Intereseaza-te de Storage
+
 Razvan - Idei noi pentru planning
+
 Seba - Idei noi pentru planning + Intereseaza-te de Storage (Proiecte, Eventual integrare cu GIT, Integrare cu video player pe site)
 
