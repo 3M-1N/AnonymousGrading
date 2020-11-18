@@ -15,5 +15,9 @@ will be able to provide a demonstration video for their project that will be aut
   - The jury consists of 6 randomly chosen members. Only the members of the jury can add grades, and the grades can only be modified by their owners but only 
 for a limited period of time. Once the members of the jury are selected 
 
-#TO-DO cristina-UI, laur-prezentare, razvan-adaugat planning;
+#TO-DO:
+Cristina - UI Design
+Laur - Verifica prezentari + Intereseaza-te de Storage
+Razvan - Idei noi pentru planning
+Seba - Idei noi pentru planning + Intereseaza-te de Storage (Proiecte, Eventual integrare cu GIT, Integrare cu video player pe site)
 
