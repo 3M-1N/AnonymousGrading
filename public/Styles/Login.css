@@ -43,6 +43,7 @@ button {
     margin: 10px 0px;   
     cursor: pointer;   
     display: inline-block;
+    width: 100px;
 }   
 
 form {   
@@ -73,18 +74,14 @@ button:hover {
 
 
 .buttons_container { 
-    position: relative;
-    display: grid;
-    text-align: center;
-    width: 30%;
+  float:left;
+  width:100%;
+  text-align:center;
 }
 
-#btn_submit, #btn_register { 
-    display: inline;
-    text-align: center;
+button { 
+    display: inline-block;
 }
-
-
 /* SIDE MENU/BAR  */
 
 .left_side_menu{
