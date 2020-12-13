@@ -5,7 +5,6 @@ const Op = Sequelize.Op
 const cors = require('cors')
 const sequelize = new Sequelize('AnonymousGrading', 'root', 'root', {
   dialect: 'mysql',
-  
 })
 
 const app = express()
@@ -32,8 +31,6 @@ const User=sequelize.define('user',{
     allowNull:false
   }
 })
-
-
 
 app.get('/create', async (req, res, next) => {
   try {
