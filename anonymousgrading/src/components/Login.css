@@ -1,31 +1,3 @@
-Body {  
-    padding: 0;
-    margin: 0;
-    font-family: Calibri, Helvetica, sans-serif;  
-    background-color: whitesmoke;  
-}  
-
-/* MAIN PAGE */
-
-.page_wrapper { 
-
-    position: relative;
-    text-align: center;
-
-}
-
-
-.page_title { 
-
-    position: relative;
-    font-size: 3rem;
-    top: 30px;
-    text-align: left;
-    left: 400px;
-
-}
-
-
 /* LOGIN FORM  */
 
 form { 
@@ -81,22 +53,4 @@ button:hover {
 
 button { 
     display: inline-block;
-}
-/* SIDE MENU/BAR  */
-
-.left_side_menu{
-    position: fixed;
-    width: 20%; 
-    height: 100%;
-    float: left; 
-    background-color: darkcyan;
-}
-
-
-.menu_title { 
-
-    padding-top: 30px;
-    font-size: 2.3rem;
-    font: "Monaco";
-
 }
