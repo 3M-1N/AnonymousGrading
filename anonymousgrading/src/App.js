@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import MainPageTitle from './components/MainPageTitle.js'
 import LoginForm from './components/LoginForm.js'
