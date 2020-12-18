@@ -2,10 +2,11 @@
 
 form { 
     position: relative;
-    width: 30%;
+    width: 20em;
     display: inline-block;
-    top: 50px;
-
+    top: 10%;
+    height:auto;
+    
 }
 
 button {   

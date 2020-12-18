@@ -38,6 +38,26 @@ const User=sequelize.define('user',{
   isTeacher:{
     type:Sequelize.BOOLEAN,
     allowNull:false
+  },
+  juryFor:{
+    type:Sequelize.INTEGER,
+    allowNull: true
+  }
+})
+
+const Team = sequelize.define('team',{
+  teamName:{
+    type: Sequelize.STRING,
+    allowNull: false
+}
+})
+
+const Grade = sequelize.define('grade',{
+  grade:{
+    type:Sequelize.INTEGER,
+    validate:{
+      [Op.between]:[1,10]
+    }
   }
 })
 
@@ -62,20 +82,20 @@ const Project=sequelize.define('projects',{
       len:[5,150]
     }
   }, 
-  link_towards_video : { 
+  linkToVid : { 
     type : Sequelize.STRING, 
     allowNull:true
   },
-  team_id : { 
-    type:Sequelize.STRING,
-    allowNull:false
-  },
-  final_grade: { 
-    type : Sequelize.STRING,
-    allowNull:true
-  }
+  // teamId : { 
+  //   type:Sequelize.INTEGER,
+  //   allowNull:true
+  // }
 })
 
+Team.hasMany(User)
+User.hasMany(Grade)
+Team.hasMany(Project)
+Project.hasMany(Grade)
 
 app.get('/create', async (req, res, next) => {
   try {
@@ -181,7 +201,7 @@ app.get('/projects/:proj_id', async(req,res,next)=>{
 })
 
 
-app.put('/projects/:proj_id', (request, response) => {
+app.put('/projects/:proj_id', async(request, response) => {
    Project.findByPk(request.params.proj_id).then((proj) => {
       if(proj) {
         proj.update(request.body).then((result) => {
@@ -200,11 +220,11 @@ app.put('/projects/:proj_id', (request, response) => {
 })
 
 
-app.delete('/projects/:proj_id', (request, response) => {
+app.delete('/projects/:proj_id', async(request, response) => {
   Project.findByPk(request.params.proj_id).then((proj) => {
       if(proj) {
-        proj.destroy().then((result) => {
-              response.status(204).send('project successfully deleted')
+        proj.destroy().then((response) => {
+              response.status(201).json({message:'project successfully deleted'})
           }).catch((err) => {
               console.log(err)
               response.status(500).send('database error')
@@ -216,6 +236,295 @@ app.delete('/projects/:proj_id', (request, response) => {
       console.log(err)
       response.status(500).send('database error')
   })
+})
+
+//teams
+app.get('/teams', async(req,res, next)=>{
+  try{
+    const teams =await Team.findAll()
+    res.status(200).json(teams)
+  } catch(err){
+    next(err)
+  }
+})
+
+app.post('/teams', async(req , res, next)=>{
+  try{
+    await Team.create(req.body)
+    res.status(200).json({message:'added'})
+  }catch(err){
+    next(err)
+  }
+})
+
+
+app.get('/teams/:teamId', async(req,res,next)=>{
+  try{
+
+    const team= await Team.findByPk(req.params.teamId)
+    
+    if(team){
+      res.status(200).json(team)
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+app.get('/teams/:teamId/users', async(req,res,next)=>{
+  try{
+    const team= await Team.findByPk(req.params.teamId)
+    
+    if(team){
+      const users = await User.findAll({where:{teamId:req.params.teamId}})
+      res.status(200).json(users)
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+app.get('/teams/:teamId/users/:usrId', async(req,res,next)=>{
+  try{
+    const team= await Team.findByPk(req.params.teamId)
+    
+    if(team){ 
+      const users = await User.findAll({where:{id: req.params.usrId,teamId:req.params.teamId}})
+      const user=users.shift()
+      if(user){
+        res.status(200).json(user)
+      }else{
+        res.status(404).json({message:'not found'})
+      }
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+app.delete('/teams/:teamId/users/:usrId', async(req,res,next)=>{
+  try{
+    const team= await Team.findByPk(req.params.teamId)
+    
+    if(team){ 
+      const users = await User.findAll({where:{id: req.params.usrId,teamId:req.params.teamId}})
+      const user=users.shift()
+      if(user){
+        user.teamId = null 
+        await user.save()
+        res.status(201).json({message:'accepted'})
+      }else{
+        res.status(404).json({message:'not found'})
+      }
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+
+app.put('/teams/:teamId', async(req, res, next)=>{
+  try{
+  const team = await Team.findByPk(req.params.teamId)
+  if(team){
+      team.update(req.body)
+      res.status(200).json({message:'accepted'})
+    }
+    else{
+      res.status(400).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+
+app.delete('/teams/:teamId', async(request, response) => {
+  try{
+   const team = await Team.findByPk(request.params.teamId)
+      if(team) {
+        const _users =await User.findAll({where:{teamId:request.params.teamId}})
+        _users.forEach(user=>user.teamId=null)
+        team.destroy()
+        response.status(204).json({message:'deleted'})  
+     }else {
+          response.status(404).send('resource not found')
+      }
+  }catch(err) {
+      console.log(err)
+      response.status(500).send('database error')
+  }
+})
+
+app.get('/teams/:teamId/projects', async(req,res,next)=>{
+  try{
+    const team= await Team.findByPk(req.params.teamId)
+    
+    if(team){
+      const projects = await Project.findAll({where:{teamId:req.params.teamId}})
+      res.status(200).json(projects)
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+app.post('/teams/:teamId/projects', async(req,res,next)=>{
+  try{
+    const team= await Team.findByPk(req.params.teamId)
+    if(team){
+      const project = new Project(req.body)
+      project.teamId=req.params.teamId
+      await project.save()
+      res.status(200).json({message:'added'})
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+app.get('/teams/:teamid/projects/:projectid', async(req, res, next)=>{
+  try{
+    const team = Team.findByPk(req.params.teamid)
+    if(team){
+      const proj = await Project.findAll({where:{id: req.params.projectid,teamId:req.params.teamid}})
+      const project=proj.shift()
+      if(project){
+      res.status(201).json(project)
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }else{
+    res.status(404).json({message:'not found'})
+  }
+  }catch(err){
+    next(err)
+  }
+})
+
+app.delete('/teams/:teamId/projects/:projectid', async(req,res,next)=>{
+  try{
+    const team= await Team.findByPk(req.params.teamId)
+    
+    if(team){ 
+      const proj = await Project.findAll({where:{id: req.params.projectid,teamId:req.params.teamId}})
+      const project=proj.shift()
+      if(project){ 
+        await project.destroy()
+        res.status(201).json({message:'accepted'})
+      }else{
+        res.status(404).json({message:'not found'})
+      }
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+app.put('/teams/:teamId/projects/:projectid', async(req,res, next)=>{
+  try{
+    const team =await Team.findByPk(req.params.teamId)
+    if(team){
+      const projects= await Project.findAll({where:{id:req.params.projectid, teamId:req.params.teamId}})
+      const project = projects.shift()
+      if(project){
+        await project.update(req.body)
+        res.status(200).json({message:'accepted'})
+      }else{
+        res.status(404).json({message:'not found'})
+      }
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+
+//grades
+app.get('/teams/:teamid/projects/:projectid/grades', async(req, res, next)=>{
+  try{
+    const team =await Team.findByPk(req.params.teamid)
+    if(team){
+    const project = Project.findByPk(req.params.projectId)
+    if(project){
+      const grades = await Grade.findAll({where:{projectId: req.params.projectid}})
+      if(grades){
+      res.status(201).json(grades)
+    }else{
+      res.status(404).json({message:'no grades'})
+    }
+  }else{
+    res.status(404).json({message:'not found'})
+  }
+}else{
+  res.status(404).json({message:'not found'})
+}
+  }catch(err){
+    next(err)
+  }
+})
+
+app.post('/teams/:teamid/projects/:projectid/grades', async(req, res, next)=>{
+  try{
+    const team =await Team.findByPk(req.params.teamid)
+    if(team){
+    const project = Project.findByPk(req.params.projectid)
+    if(project){
+      const grade = new Grade(req.body)
+      grade.projectId=req.params.projectid
+      await grade.save()
+      res.status(201).json({message:'added'})
+    }else{
+      res.status(404).json({message:'no grades'})
+    }
+  }else{
+    res.status(404).json({message:'not found'})
+  }
+}catch(err){
+    next(err)
+  }
+})
+
+app.put('/teams/:teamid/projects/:projectid/grades/:gid', async(req, res, next)=>{
+  try{
+    const team =await Team.findByPk(req.params.teamid)
+    if(team){
+    const project = await Project.findByPk(req.params.projectid)
+    if(project){
+      const grades =await Grade.findAll({where:{id:req.params.gid,projectId:req.params.projectid}})
+      const grade= grades.shift()
+      if(grade){
+      await grade.update(req.body)
+        res.status(201).json({message:'accepted'})
+      }else{
+        res.status(404).json({message:'not found'})
+      }
+      
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }else{
+    res.status(404).json({message:'not found'})
+  }
+}catch(err){
+    next(err)
+  }
 })
 
 
