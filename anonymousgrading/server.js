@@ -26,7 +26,8 @@ const User=sequelize.define('user',{
     allowNull: false,
     validate:{
       len:[3,30]
-    }
+    },
+    unique: true
   },
   password:{
     type:Sequelize.STRING,
@@ -115,15 +116,33 @@ app.get('/users', async(req,res, next)=>{
   }
 })
 
-app.get('/users/:usr_id', async(req,res,next)=>{
-  try{
-    const user= await User.findByPk(req.params.usr_id)
-    if(user){
-      res.status(200).json(user)
+// app.get('/users/:usr_id', async(req,res,next)=>{
+//   try{
+//     const user= await User.findByPk(req.params.usr_id)
+//     if(user){
+//       res.status(200).json(user)
+//     }else{
+//       res.status(404).json({message:'not found'})
+//     }
+//   }catch(err){
+//     next(err)
+//   }
+// })
+
+app.get('/users/:userName', async(req,res,next)=>{
+  try { 
+    const user = await User.findOne({ 
+      where:
+      { userName : req.params.userName}
+    })
+    
+    if(user !== null){
+        res.status(202).json(user)
     }else{
-      res.status(404).json({message:'not found'})
+        res.status(404).json({message: 'not found'})
     }
-  }catch(err){
+  }
+  catch(err){
     next(err)
   }
 })
