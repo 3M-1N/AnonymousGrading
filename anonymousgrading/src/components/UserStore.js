@@ -1,9 +1,12 @@
+
 import { EventEmitter } from 'fbemitter'
 const SERVER = 'http://localhost:8080'
 
 class UserStore {
     constructor(){
         this.data=[]
+        this.user=''
+        this.pass=''
         this.emitter = new EventEmitter()
     }
 
@@ -35,7 +38,18 @@ class UserStore {
         }
     }
 
-
+    async getByUsername(userName){
+        try{
+            const response=await fetch(`${SERVER}/users/${userName}`)
+            const userRes= await response.json()
+            this.user=userRes.userName
+            this.pass=userRes.password
+            this.emitter.emit('GET_USER_SUCCESS')
+        }catch(err){
+            console.warn(err)
+            this.emitter.emit('GET_USER_ERROR')
+        }
+    }
 
 
 }

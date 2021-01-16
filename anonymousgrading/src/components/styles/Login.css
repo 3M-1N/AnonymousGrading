@@ -7,6 +7,16 @@ form {
     height:auto;
 }
 
+.header {
+    font-size: 55px;
+    color: #ec7301;
+    outline: none;
+    font-family: Kanit;
+    text-shadow: #000 3px 3px 10px;
+    margin-bottom: 10vh;
+    -webkit-text-stroke: 3px black;
+}
+
 button {   
     background-color: #e06c00;   
     color: black;   

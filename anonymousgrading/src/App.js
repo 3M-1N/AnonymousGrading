@@ -1,15 +1,32 @@
 import './App.css';
-import MainPageTitle from './components/MainPageTitle.js'
-import LoginForm from './components/LoginForm.js'
 
+import LoginForm from './components/LoginForm.js'
+import {HashRouter as Router, Route, Switch} from 'react-router-dom' 
+import Home from './Home'
+
+// function HelloWorldFunction(){ 
+
+
+//   return(
+//     <div>Hello world function</div>
+//   )
+// }
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <MainPageTitle />
-        <LoginForm />
+          <Router>
+            <Switch>
+              <Route path = '/' exact>
+                <LoginForm />
+              </Route>
+              <Route path='/home/:userName' >
+                <Home />
+              </Route>
+            </Switch>
+          </Router>
       </header>
     </div>
   );

@@ -116,7 +116,7 @@ app.get('/users', async(req,res, next)=>{
   }
 })
 
-<<<<<<< HEAD
+
 // app.get('/users/:usr_id', async(req,res,next)=>{
 //   try{
 //     const user= await User.findByPk(req.params.usr_id)
@@ -139,14 +139,6 @@ app.get('/users/:userName', async(req,res,next)=>{
     
     if(user !== null){
         res.status(202).json(user)
-=======
-
-app.get('/users/:usr_id', async(req,res,next)=>{
-  try{
-    const user= await User.findByPk(req.params.usr_id)
-    if(user){
-      res.status(200).json(user)
->>>>>>> 0f6f7745663bd0b728392da0bb832bd7113c9e1f
     }else{
         res.status(404).json({message: 'not found'})
     }
