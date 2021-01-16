@@ -1,0 +1,93 @@
+/* LOGIN FORM  */
+form { 
+    position: relative;
+    width: 15em;
+    display: inline-block;
+    top: 10%;
+    height:auto;
+}
+
+button {   
+    background-color: #e06c00;   
+    color: black;   
+    padding: 15px;   
+    margin: 10px 0px;   
+    cursor: pointer;   
+    display: inline-block;
+    width: 100px;
+}   
+
+input[type=text], input[type=password] {   
+    width: 100%;   
+    margin: 8px 0;  
+    padding: 12px 20px;   
+    display: inline-block;   
+    box-sizing: border-box;   
+}  
+
+button:hover {   
+    opacity: 0.7;   
+}   
+  
+.container {   
+    padding: 25px;   
+    position: relative;
+    box-sizing: border-box;
+    background-image: url('../assets/background3.jpg');
+    background-position-x: 25vw;
+    background-position-y: 30.7vw;
+    background-color:#141414;
+    border-color: #e06c00;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 4px;
+    outline: none;
+}   
+
+.buttons_container { 
+  float:left;
+  width:100%;
+  text-align:center;
+}
+
+button { 
+    display: inline-block;
+}
+.button {
+    font-size: 15px;
+    padding: 10px 15px;
+    z-index: 2;
+    box-sizing: border-box;
+    color: #e06c00;
+    background-color:#1e1e1e;
+    border-color: #e06c00;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 2px;
+    text-align: center;
+    outline: none;
+    font-family: Kanit;
+    text-shadow: #000 1px 1px 10px;
+    cursor: pointer;
+}
+
+label {
+    font-size: 25px;
+    color: #e06c00;
+    outline: none;
+    font-family: Kanit;
+    text-shadow: #000 1px 1px 10px;
+}
+
+input {
+    font-size: 15px;
+    color: #e06c00;
+    background-color:#181818;
+    font-family: Kanit;
+    border-color: #e06c00;
+    border-radius: 25px;
+    border-style: solid;
+    border-width: 2px;
+    text-shadow: rgb(0, 0, 0) 1px 1px 10px;
+    outline: none;
+}

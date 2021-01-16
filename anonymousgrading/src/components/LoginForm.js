@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
-import "./Login.css"
+import "./styles/Login.css"
 import UserStore from './UserStore'
-
+import { withRouter } from 'react-router-dom'
 
 class LoginForm extends Component {
     constructor(){
@@ -34,14 +34,16 @@ class LoginForm extends Component {
     render() {
         return (<form>
             <div className="container">
+                <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+                <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet"></link>
                 <label>Username : </label>
                 <input type="text" placeholder="Enter Username" name="username" required value={this.state.username} onChange={this.handleChange} />
                 <label>Password : </label>
                 <input type="password" placeholder="Enter Password" name="password" required value={this.state.password} onChange={this.handleChange} />
 
                 <div className="buttons_container">
-                    <button type="submit" id="btn_login" >Login</button>
-                    <button type="submit" id="btn_register" onClick={this.register}  >Register</button>
+                    <button type="submit" id="btn_login" class="button">Login</button>
+                    <button type="submit" id="btn_register" class="button" onClick={this.register}  >Register</button>
                 </div>
 
                 <label>Teacher account </label>
