@@ -14,7 +14,7 @@
 }
 
 .App-header {
-  background-color: gray;
+  background-image: url('./components/assets/background5.jpg');
   min-height: 100vh;
   display: flex;
   flex-direction: column;

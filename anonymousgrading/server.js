@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 const cors = require('cors')
-const sequelize = new Sequelize('AnonymousGrading', 'root', 'root', {
+const sequelize = new Sequelize('anonymousgrading', 'root', 'root', {
   dialect: 'mysql',
   host: "localhost"
 })
