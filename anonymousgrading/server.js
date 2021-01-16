@@ -116,7 +116,6 @@ app.get('/users', async(req,res, next)=>{
   }
 })
 
-
 // app.get('/users/:usr_id', async(req,res,next)=>{
 //   try{
 //     const user= await User.findByPk(req.params.usr_id)
@@ -136,7 +135,7 @@ app.get('/users/:userName', async(req,res,next)=>{
       where:
       { userName : req.params.userName}
     })
-    
+
     if(user !== null){
         res.status(202).json(user)
     }else{
@@ -171,39 +170,36 @@ app.put('/users/:usr_id', async(req,res,next)=>{
   }
 })
 
-app.delete('/users/:usr_id', async(req, res, next)=>{
-  try{
-    const user= await User.findByPk(req.params.usr_id)
-      if(user){
-        await user.destroy()
-        res.status(202).json({ message: 'accepted' })
-      }else{
-        res.status(404).json({message:'not found'})
-      }
-    }catch(err){
-      next(err)
-    }
-})
+// app.delete('/users/:usr_id', async(req, res, next)=>{
+//   try{
+//     const user= await User.findByPk(req.params.usr_id)
+//       if(user){
+//         await user.destroy()
+//         res.status(202).json({ message: 'accepted' })
+//       }else{
+//         res.status(404).json({message:'not found'})
+//       }
+//     }catch(err){
+//       next(err)
+//     }
+// })
 
-
-// ???????????????? 
 app.get('/users/:userName', async(req,res,next)=>{
   try { 
-    const user = await User.findAll({where:
-       {userName:req.params.userName}})
-    const userVar = user.map(u => u.userName === req.params.userName)
+    const user = await User.findOne({ 
+      where:
+      { userName : req.params.userName}
+    })
 
-    if(userVar){
-        res.status(202).json(userVar)
+    if(user !== null){
+        res.status(202).json(user)
     }else{
         res.status(404).json({message: 'not found'})
     }
-
   }
   catch(err){
     next(err)
   }
-
 })
 
 

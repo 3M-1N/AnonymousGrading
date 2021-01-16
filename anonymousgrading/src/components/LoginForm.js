@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import "./styles/Login.css"
 import UserStore from './UserStore'
 import { withRouter } from 'react-router-dom'
+import HomePage from './HomePage'
 
 
 class LoginForm extends Component {
