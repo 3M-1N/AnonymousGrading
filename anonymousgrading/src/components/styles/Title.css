@@ -1,0 +1,9 @@
+.header {
+    font-size: 60px;
+    color: #e06c00;
+    outline: none;
+    font-family: Kanit;
+    text-shadow: #000 1px 1px 10px;
+    margin-bottom: 10vh;
+    -webkit-text-stroke: 3px black;
+}
