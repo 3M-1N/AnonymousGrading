@@ -14,7 +14,7 @@ function App() {
       <Router>
         <Switch>
           <Route path='/' exact>
-            <AddProjectForm />
+            <LoginForm />
           </Route>
           <Route path='/home'>
             <HomePage />
