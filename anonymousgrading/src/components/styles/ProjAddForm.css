@@ -1,0 +1,9 @@
+.add-project-form { 
+  background-color: whitesmoke;
+  align-items: center;
+}
+
+.form_field { 
+
+    display: block;
+}

@@ -1,8 +1,9 @@
 import './App.css';
 import MainPageTitle from './components/MainPageTitle.js'
 import LoginForm from './components/LoginForm.js'
+import AddProjectForm from './components/AddProjectForm'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
-import HomePage from './HomePage';
+import HomePage from './components/HomePage';
 
 
 
@@ -13,9 +14,9 @@ function App() {
       <Router>
         <Switch>
           <Route path='/' exact>
-            <LoginForm />
+            <AddProjectForm />
           </Route>
-          <Route path='/:home'>
+          <Route path='/home'>
             <HomePage />
           </Route>
         </Switch>
