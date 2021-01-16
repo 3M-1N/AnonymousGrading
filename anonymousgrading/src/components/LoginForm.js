@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import "./Login.css"
 import UserStore from './UserStore'
-
+import { withRouter } from 'react-router-dom'
 
 class LoginForm extends Component {
     constructor(){

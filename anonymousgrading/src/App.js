@@ -2,13 +2,6 @@ import './App.css';
 import MainPageTitle from './components/MainPageTitle.js'
 import LoginForm from './components/LoginForm.js'
 
-// function HelloWorldFunction(){ 
-
-
-//   return(
-//     <div>Hello world function</div>
-//   )
-// }
 
 
 function App() {

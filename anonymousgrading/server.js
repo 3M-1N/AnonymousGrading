@@ -115,6 +115,7 @@ app.get('/users', async(req,res, next)=>{
   }
 })
 
+
 app.get('/users/:usr_id', async(req,res,next)=>{
   try{
     const user= await User.findByPk(req.params.usr_id)
@@ -126,7 +127,7 @@ app.get('/users/:usr_id', async(req,res,next)=>{
   }catch(err){
     next(err)
   }
-})
+}) 
 
 app.post('/users', async(req , res, next)=>{
   try{
@@ -163,6 +164,27 @@ app.delete('/users/:usr_id', async(req, res, next)=>{
     }catch(err){
       next(err)
     }
+})
+
+
+// ???????????????? 
+app.get('/users/:userName', async(req,res,next)=>{
+  try { 
+    const user = await User.findAll({where:
+       {userName:req.params.userName}})
+    const userVar = user.map(u => u.userName === req.params.userName)
+
+    if(userVar){
+        res.status(202).json(userVar)
+    }else{
+        res.status(404).json({message: 'not found'})
+    }
+
+  }
+  catch(err){
+    next(err)
+  }
+
 })
 
 
