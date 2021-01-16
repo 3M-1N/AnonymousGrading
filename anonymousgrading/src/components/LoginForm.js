@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import "./styles/Login.css"
 import UserStore from './UserStore'
 import { withRouter } from 'react-router-dom'
+import HomePage from '../HomePage'
 
 class LoginForm extends Component {
     constructor(){
@@ -42,7 +43,7 @@ class LoginForm extends Component {
                 <input type="password" placeholder="Enter Password" name="password" required value={this.state.password} onChange={this.handleChange} />
 
                 <div className="buttons_container">
-                    <button type="submit" id="btn_login" class="button">Login</button>
+                    <button type="submit" id="btn_login" class="button" onClick={<HomePage />}>Login</button>
                     <button type="submit" id="btn_register" class="button" onClick={this.register}  >Register</button>
                 </div>
 
@@ -55,4 +56,4 @@ class LoginForm extends Component {
 
 }
 
-export default LoginForm
+export default withRouter(LoginForm)
