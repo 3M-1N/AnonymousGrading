@@ -25,8 +25,6 @@ class AddProjectForm extends React.Component {
               })
         }
 
-
-
         this.addProject = () => { 
             this.store.addProj({ 
                 title : this.state.title, 
@@ -43,7 +41,6 @@ class AddProjectForm extends React.Component {
         <div className='add-project-form'> 
 
         <form> 
-
             <div className="form_field">
                 <label htmlFor="projName">Project Title</label>
                 <input id="projName" name="title"  value={this.state.title} onChange={this.handleChange}  />
@@ -69,11 +66,9 @@ class AddProjectForm extends React.Component {
             </div>
 
         </form>
-
         </div>
         )
     }
-
 }
 
 export default withRouter(AddProjectForm)

@@ -18,13 +18,23 @@ class ProjectStore {
               body: JSON.stringify(proj)
             })
           } catch (err) {
-            console.warn(err)
+        console.warn(err)
         }
-
     }
 
-
+    async getAll() {
+      try{
+          const response = await fetch(`${SERVER}/projects`)
+          const data = await response.json()
+          for (var position in data) {
+              this.data.push(data[position].title) 
+          }
+          this.emitter.emit('GET_PROJECTS_SUCCESS')
+      } catch(err){
+          console.warn(err)
+          this.emitter.emit('GET_PROJECTS_ERROR')
+      }
+  }
 }
-
 
 export default ProjectStore

@@ -1,6 +1,9 @@
 import { Button } from 'primereact/button'
 import React  from  'react'
 import CurrentUsrTeamStore from './CurrentUsrTeamStore'
+import MemberComp from './MemberComp'
+import ProjectComp from './ProjectComp'
+import ProjectStore from './ProjectStore'
 
 class TeamComp extends React.Component{
     constructor(props){
@@ -10,17 +13,15 @@ class TeamComp extends React.Component{
             team:{
                teamName:''
             }
-            
         }
 
         this.store = new CurrentUsrTeamStore(this.props.userName)
-
 
         this.handleChange = (evt) => {
             const team = this.state.team
             team[evt.target.name] = evt.target.value
             this.setState({
-              team
+              team: team
             })
           }
 
@@ -32,7 +33,7 @@ class TeamComp extends React.Component{
     }
 
     componentDidMount(){
-        console.log(this.props.userName)
+        //console.log(this.props.userName)
         this.store.getUserData(this.props.userName)
         setTimeout(()=>this.store.getTeam(),1000)
         this.store.emitter.addListener('GET_TEAM_SUCCESS',()=>this.setState({
@@ -55,8 +56,8 @@ class TeamComp extends React.Component{
             <>
             
             <div> Team id: {this.state.team.id} | Name: {this.state.team.teamName}</div>
-            {/* <div ><MemberComp /></div>
-            <div ><ProjectComp /></div> */}
+            <div><ProjectComp/></div>
+            <div><MemberComp/></div>
             </>
         )
     }

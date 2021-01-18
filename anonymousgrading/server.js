@@ -294,7 +294,6 @@ app.post('/teams', async(req , res, next)=>{
   }
 })
 
-
 app.get('/teams/:teamId', async(req,res,next)=>{
   try{
 

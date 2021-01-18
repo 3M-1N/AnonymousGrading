@@ -28,9 +28,13 @@ class CurrentUsrTeamStore extends React.Component{
         try{
             const response=await fetch(`${SERVER}/teams/${this.loggedUser.teamId}`)
             const team = await response.json()
-            Object.assign(this.team,team)
-            this.emitter.emit('GET_TEAM_SUCCESS')
-        }catch(err){
+            if (!team.toString().includes('not found'))
+            {
+              Object.assign(this.team,team)
+              this.emitter.emit('GET_TEAM_SUCCESS')
+            } 
+            else this.emitter.emit('GET_TEAM_ERROR')
+            } catch(err){
             console.warn(err)
             this.emitter.emit('GET_TEAM_ERROR')
         }
@@ -62,7 +66,7 @@ class CurrentUsrTeamStore extends React.Component{
               body: JSON.stringify(team)
               
             })
-            this.getTeam()
+          this.getTeam()
             //this.getAll()
           } catch (err) {
             console.warn(err)
