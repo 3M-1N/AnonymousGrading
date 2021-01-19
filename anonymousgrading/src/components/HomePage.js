@@ -14,6 +14,8 @@ class HomePage extends Component{
         return (
             <>
             <div><Nav userName={this.props.match.params.userName}/></div>
+
+            
             <div><TeamComp userName={this.props.match.params.userName} /></div>
             </>
         )

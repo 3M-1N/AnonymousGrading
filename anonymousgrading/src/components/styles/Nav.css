@@ -2,10 +2,12 @@ nav{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    min-height: 10vh;
+    min-height: 15vh;
     background-color: rgb(80, 75, 75);
     color: white;
+
 }
+
 
 .navItems{
     width: 40%;
@@ -13,4 +15,11 @@ nav{
     justify-content: space-around;
     display: flex;
     list-style: none;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+}
+
+nav h3 { 
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 1.3rem;
 }
