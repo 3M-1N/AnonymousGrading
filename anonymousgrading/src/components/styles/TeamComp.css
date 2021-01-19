@@ -65,6 +65,5 @@ input[class="input-btn"] {
 }
 
 input[class="input-btn"]:hover { 
-    background-color: #555555;
-    color: white;
+    background: #109177;
 }
