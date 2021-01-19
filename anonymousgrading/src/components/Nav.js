@@ -15,7 +15,7 @@ class Nav extends React.Component{
                 <h3>Anonymous Grading : {this.props.userName}</h3>
                 <ul className="navItems">
                     <Link to='' style={navStyle}><li>See all teams</li></Link>
-                    <Link to='' style={navStyle}><li>See all projects</li></Link>
+                    <Link to='/projects' style={navStyle}><li>See all projects</li></Link>
                 </ul>
             </nav>
         )
