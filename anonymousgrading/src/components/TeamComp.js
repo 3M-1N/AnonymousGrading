@@ -33,7 +33,6 @@ class TeamComp extends React.Component{
     }
 
     componentDidMount(){
-        //console.log(this.props.userName)
         this.store.getUserData(this.props.userName)
         setTimeout(()=>this.store.getTeam(),1000)
         this.store.emitter.addListener('GET_TEAM_SUCCESS',()=>this.setState({
@@ -57,7 +56,7 @@ class TeamComp extends React.Component{
             
             <div> Team id: {this.state.team.id} | Name: {this.state.team.teamName}</div>
             <div><ProjectComp/></div>
-            <div><MemberComp/></div>
+            <div><MemberComp userName={this.store.usrName}/></div>
             </>
         )
     }
