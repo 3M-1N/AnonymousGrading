@@ -1,7 +1,14 @@
 /* LOGIN FORM  */
+
+.login_page_container { 
+    text-align: center;
+
+}
+
+
 form { 
     position: relative;
-    width: 15em;
+    width: 30%;
     display: inline-block;
     top: 10%;
     height:auto;
@@ -13,8 +20,8 @@ form {
     outline: none;
     font-family: Kanit;
     text-shadow: #000 3px 3px 10px;
-    margin-bottom: 10vh;
-    -webkit-text-stroke: 3px black;
+    margin-bottom: 5vh;
+    -webkit-text-stroke: 2px black;
 }
 
 button {   
@@ -27,8 +34,7 @@ button {
     width: 100px;
 }   
 
-input[type=text], input[type=password] {   
-    width: 100%;   
+input[class="input_field"]{   
     margin: 8px 0;  
     padding: 12px 20px;   
     display: inline-block;   
@@ -43,15 +49,15 @@ button:hover {
     padding: 25px;   
     position: relative;
     box-sizing: border-box;
-    background-image: url('../assets/background3.jpg');
     background-position-x: 25vw;
     background-position-y: 30.7vw;
-    background-color:#141414;
+    background-color:#222121;
     border-color: #e06c00;
     border-radius: 25px;
     border-style: solid;
     border-width: 4px;
     outline: none;
+    width: 100%;
 }   
 
 .buttons_container { 
@@ -63,7 +69,7 @@ button:hover {
 button { 
     display: inline-block;
 }
-.button {
+#btn_login, #btn_register {
     font-size: 15px;
     padding: 10px 15px;
     z-index: 2;
@@ -81,7 +87,7 @@ button {
     cursor: pointer;
 }
 
-label {
+label[class="login_label"] {
     font-size: 25px;
     color: #e06c00;
     outline: none;
@@ -89,7 +95,7 @@ label {
     text-shadow: #000 1px 1px 10px;
 }
 
-input {
+input[class="input_field"] {
     font-size: 15px;
     color: #e06c00;
     background-color:#181818;

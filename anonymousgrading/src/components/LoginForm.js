@@ -48,34 +48,35 @@ class LoginForm extends Component {
     }
     render() {
         return (
-
-            <>
+            <div className="login_page_container">
               <div className="header">
                 <link rel="preconnect" href="https://fonts.gstatic.com"></link>
                 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet"></link>
                 Welcome to Anonymous Grading!
               </div>
-        <form>
+
+             <form>
       
-            <div className="container">
-                <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-                <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet"></link>
-                
-                <label>Username : </label>
-                <input type="text" placeholder="Enter Username" name="username" required value={this.state.username} onChange={this.handleChange} />
-                <label>Password : </label>
-                <input type="password" placeholder="Enter Password" name="password" required value={this.state.password} onChange={this.handleChange} />
+                <div className="container">
+                    <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+                    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet"></link>
+                    
+                    <label class="login_label">Username : </label>
+                    <input class="input_field" type="text" placeholder="Enter Username" name="username" required value={this.state.username} onChange={this.handleChange} />
+                    <label class="login_label">Password : </label>
+                    <input class="input_field" type="password" placeholder="Enter Password" name="password" required value={this.state.password} onChange={this.handleChange} />
 
-                <div className="buttons_container">
-                    <button type="submit" id="btn_login" class="button" onClick={this.login} >Login</button>
-                    <button type="submit" id="btn_register" class="button" onClick={this.register}>Register</button>
+                    <div className="buttons_container">
+                        <button type="submit" id="btn_login" class="button" onClick={this.login} >Login</button>
+                        <button type="submit" id="btn_register" class="button" onClick={this.register}>Register</button>
+                    </div>
+
+                    <label class="login_label">Teacher account </label>
+                    <input type="checkbox" name="teacher"  defaultChecked={this.state.isTeacher} onChange={this.handleCheck} />
                 </div>
-
-                <label>Teacher account </label>
-                <input type="checkbox" name="teacher"  defaultChecked={this.state.isTeacher} onChange={this.handleCheck} />
-            </div>
-        </form>
-        </>);
+            </form>
+        </div>
+        );
     }
 
 

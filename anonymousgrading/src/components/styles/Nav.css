@@ -3,7 +3,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     min-height: 10vh;
-    background-color: dimgray;
+    background-color: rgb(80, 75, 75);
     color: white;
 }
 
