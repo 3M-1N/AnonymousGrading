@@ -64,7 +64,6 @@ class CurrentUsrTeamStore extends React.Component{
               
             })
             this.emitter.emit("UPDATE_USER_SUCCESS")
-           // this.getAll()
           } catch (err) {
             console.warn(err)
             this.emitter.emit('SAVE_ONE_ERROR')

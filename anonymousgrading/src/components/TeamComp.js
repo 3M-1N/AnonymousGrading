@@ -1,9 +1,8 @@
-import { Button } from 'primereact/button'
+
 import React  from  'react'
 import CurrentUsrTeamStore from './CurrentUsrTeamStore'
 import MemberComp from './MemberComp'
 import ProjectComp from './ProjectComp'
-import ProjectStore from './ProjectStore'
 import './styles/TeamComp.css'
 
 class TeamComp extends React.Component{
@@ -68,9 +67,9 @@ class TeamComp extends React.Component{
                 <div>You are currently not a member of a team!</div>
                 <div>Create a team yourself or wait for invitations from other teams</div>
                 <hr></hr>
-                <label class="text-label" htmlFor='teamname'>Team Name</label>
-                <input class="input-text" type='text' name='teamname' id='teamname' onChange={this.handleChange} value={this.state.team.teamName} />
-                <input class="input-btn" type='button' value='Create Team' onClick={this.createTeam} />
+                <label class="text-label" htmlFor='teamName'>Team Name</label>
+                <input class="input-text" type='text' name='teamName' id='teamName' onChange={this.handleChange} value={this.state.team.teamName} />
+                <input className="input-btn" type='button' value='Create Team' onClick={this.createTeam} />
             </div>
             </>
             :
