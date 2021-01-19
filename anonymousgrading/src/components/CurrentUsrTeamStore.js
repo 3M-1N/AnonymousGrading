@@ -26,7 +26,7 @@ class CurrentUsrTeamStore extends React.Component{
 
     async getTeam(){
         try{
-            const response=await fetch(`${SERVER}/teams/${this.loggedUser.teamId}`)
+            const response=await fetch(`${SERVER}/teamsi/${this.loggedUser.teamId}`)
             const team = await response.json()
             if (!team.toString().includes('not found'))
             {
@@ -40,6 +40,19 @@ class CurrentUsrTeamStore extends React.Component{
         }
     }
 
+    async getTeamByName(teamName){
+      try{
+        const response=await fetch(`${SERVER}/teams/${teamName}`)
+        const teamRes= await response.json()
+        this.team={}
+        Object.assign(this.team,teamRes)
+        this.emitter.emit('GET_TEAM_SUCCESS')
+    }catch(err){
+        console.warn(err)
+        this.emitter.emit('GET_TEAM_ERROR')
+    }
+    }
+
     async editUser(){
         try {
             await fetch(`${SERVER}/users/${this.loggedUser.id}`, {
@@ -48,7 +61,9 @@ class CurrentUsrTeamStore extends React.Component{
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify(this.loggedUser)
+              
             })
+            this.emitter.emit("UPDATE_USER_SUCCESS")
            // this.getAll()
           } catch (err) {
             console.warn(err)
@@ -64,28 +79,14 @@ class CurrentUsrTeamStore extends React.Component{
                 'Content-Type': 'application/json'
               },
               body: JSON.stringify(team)
-              
             })
-          this.getTeam()
+            this.emitter.emit("ADD_TEAM_SUCCESS")
             //this.getAll()
           } catch (err) {
             console.warn(err)
             this.emitter.emit('ADD_ONE_ERROR')
           }
     }
-    
-
-    // async getAllProjects(){
-    //     try{
-    //         const response=await fetch(`${SERVER}/teams/${this.loggedUser.teamId}/projects`)
-    //         const projects = await response.json()
-    //         this.projectData=projects
-    //         this.emitter.emit('GET_PROJECTS_SUCCESS')
-    //     }catch(err){
-    //         console.warn(err)
-    //         this.emitter.emit('GET_PROJECTS_ERROR')
-    //     }
-    // }
 }
 
 export default CurrentUsrTeamStore

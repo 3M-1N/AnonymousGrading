@@ -27,9 +27,24 @@ class TeamComp extends React.Component{
           }
 
         this.createTeam =() =>{
-            console.log(this.state.team)
-            this.store.addTeam(this.state.team)
-            
+            let addedTeam={
+                teamName: this.state.team.teamName
+            }
+            console.log(addedTeam)
+            this.store.addTeam(addedTeam)
+            this.store.emitter.addListener('ADD_TEAM_SUCCESS',()=>this.store.getTeamByName(addedTeam.teamName))
+            // this.store.getTeamByName(addedTeam.teamName)
+            this.store.emitter.addListener('GET_TEAM_SUCCESS',()=>{
+         
+                this.store.loggedUser.teamId=this.store.team.id
+                console.log( this.store.loggedUser.teamId)
+                this.store.editUser(this.store.loggedUser)
+            })
+            this.store.emitter.addListener('UPDATE_USER_SUCCESS',()=>{
+                this.setState({
+                    team:this.store.team
+                })
+            })
         }
     }
 
@@ -39,12 +54,13 @@ class TeamComp extends React.Component{
         this.store.emitter.addListener('GET_TEAM_SUCCESS',()=>this.setState({
             team:this.store.team
         }))
+        console.log(this.store.loggedUser)
+        
     }
 
     render(){
         return(  
             (this.state.team.id==null) ?
-            // Object.keys(this.state.team).length===0 ?
             <>
             <div className="info">
               <img src="https://www.flaticon.com/svg/vstatic/svg/681/681494.svg?token=exp=1611071722~hmac=3d952880283cb4fa8ae7dc32b19e094a" 
