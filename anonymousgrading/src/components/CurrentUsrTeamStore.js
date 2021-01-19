@@ -87,19 +87,6 @@ class CurrentUsrTeamStore extends React.Component{
             this.emitter.emit('ADD_ONE_ERROR')
           }
     }
-    
-
-    // async getAllProjects(){
-    //     try{
-    //         const response=await fetch(`${SERVER}/teams/${this.loggedUser.teamId}/projects`)
-    //         const projects = await response.json()
-    //         this.projectData=projects
-    //         this.emitter.emit('GET_PROJECTS_SUCCESS')
-    //     }catch(err){
-    //         console.warn(err)
-    //         this.emitter.emit('GET_PROJECTS_ERROR')
-    //     }
-    // }
 }
 
 export default CurrentUsrTeamStore

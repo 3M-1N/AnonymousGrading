@@ -1,20 +1,15 @@
 import './App.css';
-
 import LoginForm from './components/LoginForm.js'
 import AddProjectForm from './components/AddProjectForm'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import HomePage from './components/HomePage';
-
-//   return(
-//     <div>Hello world function</div>
-//   )
-// }
+import ProjectsPage from './components/TeamsPage'
 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="">  
+      <header className="">
       <Router>
         <Switch>
           <Route path='/' exact>
@@ -23,11 +18,12 @@ function App() {
           <Route path='/home/:userName' >
             <HomePage />
           </Route>
+          <Route path='/projects' >
+            <ProjectsPage />
+          </Route>
         </Switch>
       </Router>
       </header>
-
-
 
     </div>
   );
