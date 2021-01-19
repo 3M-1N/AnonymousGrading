@@ -1,21 +1,15 @@
 import './App.css';
-
 import LoginForm from './components/LoginForm.js'
 import AddProjectForm from './components/AddProjectForm'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import HomePage from './components/HomePage';
 import ProjectsPage from './components/TeamsPage'
 
-//   return(
-//     <div>Hello world function</div>
-//   )
-// }
-
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="">  
+      <header className="">
       <Router>
         <Switch>
           <Route path='/' exact>
