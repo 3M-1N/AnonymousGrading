@@ -26,9 +26,24 @@ class TeamComp extends React.Component{
           }
 
         this.createTeam =() =>{
-            console.log(this.state.team)
-            this.store.addTeam(this.state.team)
-            
+            let addedTeam={
+                teamName: this.state.team.teamName
+            }
+            console.log(addedTeam)
+            this.store.addTeam(addedTeam)
+            this.store.emitter.addListener('ADD_TEAM_SUCCESS',()=>this.store.getTeamByName(addedTeam.teamName))
+            // this.store.getTeamByName(addedTeam.teamName)
+            this.store.emitter.addListener('GET_TEAM_SUCCESS',()=>{
+         
+                this.store.loggedUser.teamId=this.store.team.id
+                console.log( this.store.loggedUser.teamId)
+                this.store.editUser(this.store.loggedUser)
+            })
+            this.store.emitter.addListener('UPDATE_USER_SUCCESS',()=>{
+                this.setState({
+                    team:this.store.team
+                })
+            })
         }
     }
 
@@ -39,22 +54,22 @@ class TeamComp extends React.Component{
         this.store.emitter.addListener('GET_TEAM_SUCCESS',()=>this.setState({
             team:this.store.team
         }))
+        console.log(this.store.loggedUser)
+        
     }
 
     render(){
         return(
             (this.state.team.id==null) ?
-            // Object.keys(this.state.team).length===0 ?
             <>
             <div>You are currently not a member of a team!</div>
             <div>Create a team yourself or wait for invitations from other teams</div>
             <label htmlFor='teamname'>Team Name</label>
-            <input type='text' name='teamname' id='teamname' onChange={this.handleChange} value={this.state.team.teamName} />
+            <input type='text' name='teamName' id='teamName' onChange={this.handleChange} value={this.state.team.teamName} />
             <input type='button' value='Create Team' onClick={this.createTeam} />
             </>
             :
             <>
-            
             <div> Team id: {this.state.team.id} | Name: {this.state.team.teamName}</div>
             <div><ProjectComp/></div>
             <div><MemberComp/></div>

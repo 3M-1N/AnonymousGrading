@@ -294,6 +294,38 @@ app.post('/teams', async(req , res, next)=>{
   }
 })
 
+app.get('/teamsi/:teamId', async(req,res,next)=>{
+  try{
+
+    const team= await Team.findByPk(req.params.teamId)
+    
+    if(team){
+      res.status(200).json(team)
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+app.get('/teams/:teamName', async(req,res,next)=>{
+  try{
+
+    const team= await Team.findOne({where:{
+      teamName:req.params.teamName
+    }})
+    
+    if(team){
+      res.status(200).json(team)
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
 app.get('/teams/:teamId', async(req,res,next)=>{
   try{
 
