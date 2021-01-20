@@ -38,6 +38,23 @@ class ProjectStore {
       }
     }
 
+
+
+    async getAllProjects () {
+      try {
+        const response = await fetch(`${SERVER}/projects`)
+        const data = await response.json()
+        this.data = data
+        this.emitter.emit('GET_ALL_PROJECTS_SUCCESS')
+      } catch (err) {
+        console.warn(err)
+        this.emitter.emit('GET_ALL_PROJECTS_ERROR')
+      }
+    }
+  
+
+    
+
     // async getAllProjects() {
     //   try{
     //     const response = await fetch(`${SERVER}/projects`)
