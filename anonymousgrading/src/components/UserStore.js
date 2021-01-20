@@ -19,7 +19,8 @@ class UserStore {
             this.data = data
             this.emitter.emit('GET_ALL_SUCCESS')
         } catch(err){
-            console.warn(err)
+            window.localStorage.clear()
+            window.localStorage.setItem("ERROR: " , err)
             this.emitter.emit('GET_ALL_ERROR')
         }
     }
@@ -76,7 +77,23 @@ class UserStore {
         }
     }
 
-
+    async setJuryFor(userId, projId) {
+        try{
+            window.localStorage.setItem("In Set Jury, projId: ", projId)
+            await fetch(`${SERVER}/users/${userId}`, {
+                method: 'put',
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({'juryFor': projId})
+              })
+              this.emitter.emit('SET_JURY_FOR_SUCCESS')
+        } catch(err){
+            console.warn(err)
+            window.localStorage.setItem("SET JURY ERROR: ", err)
+            this.emitter.emit('SET_JURY_FOR_ERROR')
+        }
+    }
 }
 
 export default UserStore
