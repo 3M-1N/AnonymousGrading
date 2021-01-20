@@ -9,6 +9,7 @@ class UserStore {
         this.pass=''
         this.teamId=-1
         this.juryFor=-1
+        this.isTeacher=false
         this.emitter = new EventEmitter()
     }
 
@@ -47,6 +48,7 @@ class UserStore {
             this.user=userRes.userName
             this.pass=userRes.password
             this.juryFor=userRes.juryFor
+            this.isTeacher = userRes.isTeacher
             this.emitter.emit('GET_USER_SUCCESS')
         }catch(err){
             console.warn(err)

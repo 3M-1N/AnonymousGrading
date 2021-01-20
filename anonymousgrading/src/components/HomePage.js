@@ -35,7 +35,7 @@ class HomePage extends Component{
             </>
             :
             <>
-            <div><Nav userName={this.props.match.params.userName}/></div>
+            <div><Nav userName={this.props.match.params.userName} juryFor={this.state.juryFor}/></div>
             <p>You are a member of the jury for project with id: {this.state.juryFor}</p>
             <div><TeamComp userName={this.props.match.params.userName} /></div>
             </>

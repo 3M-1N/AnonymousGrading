@@ -18,7 +18,7 @@ function App() {
           <Route path='/home/:userName' >
             <HomePage />
           </Route>
-          <Route path='/projects' >
+          <Route path='/projects/:userName/:juryFor' >
             <ProjectsPage />
           </Route>
         </Switch>

@@ -294,6 +294,7 @@ app.post('/teams', async(req , res, next)=>{
   }
 })
 
+
 app.get('/teamsi/:teamId', async(req,res,next)=>{
   try{
 
@@ -577,6 +578,85 @@ app.put('/teams/:teamid/projects/:projectid/grades/:gid', async(req, res, next)=
     res.status(404).json({message:'not found'})
   }
 }catch(err){
+    next(err)
+  }
+})
+
+app.get('/grades', async(req,res, next)=>{
+  try{
+    const grades=await Grade.findAll()
+    res.status(200).json(grades)
+  } catch(err){
+    next(err)
+  }
+})
+
+app.get('/grades/:projId/:usrId', async(req,res, next)=>{
+  try{
+    const grades=await Grade.findOne({
+      where:{
+        projectId:req.params.projId,
+        userId:req.params.usrId
+      }
+
+    })
+    res.status(200).json(grades)
+  } catch(err){
+    next(err)
+  }
+})
+
+app.post('/grades', async(req , res, next)=>{
+  try{
+    await Grade.create(req.body)
+    res.status(200).json({message:'created'})
+  }catch(err){
+    next(err)
+  }
+})
+
+app.put('/grades/:grID', async(req,res,next)=>{
+  try{
+  const grade= await Grade.findByPk(req.params.grID)
+    if(grade){
+      await grade.update(req.body)
+      res.status(202).json({ message: 'accepted' })
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+app.delete('/grades/:grID', async(req,res,next)=>{
+  try{
+  const grade= await Grade.findByPk(req.params.grID)
+    if(grade){
+      await grade.destroy()
+      res.status(202).json({ message: 'accepted' })
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
+    next(err)
+  }
+})
+
+app.get('/gradesP/:projId', async(req,res,next)=>{
+  try{
+
+    const grades= await Grade.findAll({
+      where:{
+        projectId:req.params.projId
+      }
+    })
+    
+    if(grades){
+      res.status(200).json(grades)
+    }else{
+      res.status(404).json({message:'not found'})
+    }
+  }catch(err){
     next(err)
   }
 })
