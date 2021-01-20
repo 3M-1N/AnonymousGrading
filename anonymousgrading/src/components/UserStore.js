@@ -8,6 +8,7 @@ class UserStore {
         this.user=''
         this.pass=''
         this.teamId=-1
+        this.juryFor=-1
         this.emitter = new EventEmitter()
     }
 
@@ -45,6 +46,7 @@ class UserStore {
             const userRes= await response.json()
             this.user=userRes.userName
             this.pass=userRes.password
+            this.juryFor=userRes.juryFor
             this.emitter.emit('GET_USER_SUCCESS')
         }catch(err){
             console.warn(err)
@@ -57,6 +59,7 @@ class UserStore {
             const response=await fetch(`${SERVER}/users`)
             const data = await response.json()
             var found = false
+            console.log("In userstore")
             for (var user of data) {
                 if (user.userName === userName) {
                     this.teamId = user.teamId
