@@ -18,6 +18,7 @@ class ProjectStore {
               },
               body: JSON.stringify(proj)
             })
+            this.emitter.emit('ADDED_PROJ_SUCCESS')
           } catch (err) {
         console.warn(err)
         }
@@ -37,29 +38,25 @@ class ProjectStore {
       }
     }
 
-    async getAllProjects() {
-      try{
-        const response = await fetch(`${SERVER}/projects`)
-        const data = await response.json()
-        for (var pos in data) {
-          this.projects.push(data[pos])
-        }
-        this.emitter.emit('GET_ALL_PROJECTS_SUCCESS')
-      } catch(err){
-        console.warn(err)
-        this.emitter.emit('GET_ALL_PROJECTS_ERROR')
-      }
-    }
+    // async getAllProjects() {
+    //   try{
+    //     const response = await fetch(`${SERVER}/projects`)
+    //     const data = await response.json()
+    //     for (var pos in data) {
+    //       this.projects.push(data[pos])
+    //     }
+    //     this.emitter.emit('GET_ALL_PROJECTS_SUCCESS')
+    //   } catch(err){
+    //     console.warn(err)
+    //     this.emitter.emit('GET_ALL_PROJECTS_ERROR')
+    //   }
+    // }
 
     async getProjectsForTeam(teamId) {
       try{
-        const response = await fetch(`${SERVER}/projects`)
+        const response = await fetch(`${SERVER}/teams/${teamId}/projects`)
         const data = await response.json()
-        for (var pos in data) {
-          if (teamId == data[pos].teamId) {
-            this.projects.push(data[pos])  
-          }
-        }
+        this.projects = data
         this.emitter.emit('GET_TEAM_PROJECTS_SUCCESS')
       } catch(err){
         console.warn(err)

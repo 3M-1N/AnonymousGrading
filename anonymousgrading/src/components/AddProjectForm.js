@@ -8,8 +8,8 @@ import ProjectStore from './ProjectStore'
 
 class AddProjectForm extends React.Component { 
 
-    constructor() { 
-        super() 
+    constructor(props) { 
+        super(props) 
         this.store = new ProjectStore()
 
         this.state = { 
@@ -17,6 +17,7 @@ class AddProjectForm extends React.Component {
             description : '', 
             gitlink : '', 
             vidlink : '',   //video link 
+            // teamId: this.props.teamId
         }
 
         this.handleChange = (e) => { 
@@ -30,7 +31,8 @@ class AddProjectForm extends React.Component {
                 title : this.state.title, 
                 githubLink  :this.state.gitlink, 
                 description : this.state.description, 
-                linkToVid : this.state.vidlink
+                linkToVid : this.state.vidlink,
+                teamId : this.props.teamId
             })
         }
     }
