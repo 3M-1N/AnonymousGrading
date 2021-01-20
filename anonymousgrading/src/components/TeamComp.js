@@ -63,12 +63,12 @@ class TeamComp extends React.Component{
             <>
             <div className="info">
               <img src="https://www.flaticon.com/svg/vstatic/svg/681/681494.svg?token=exp=1611071722~hmac=3d952880283cb4fa8ae7dc32b19e094a" 
-              alt="team_icon" class="team_icon"/>
+              alt="team_icon" className="team_icon"/>
                 <div>You are currently not a member of a team!</div>
                 <div>Create a team yourself or wait for invitations from other teams</div>
                 <hr></hr>
-                <label class="text-label" htmlFor='teamName'>Team Name</label>
-                <input class="input-text" type='text' name='teamName' id='teamName' onChange={this.handleChange} value={this.state.team.teamName} />
+                <label className="text-label" htmlFor='teamName'>Team Name</label>
+                <input className="input-text" type='text' name='teamName' id='teamName' onChange={this.handleChange} value={this.state.team.teamName} />
                 <input className="input-btn" type='button' value='Create Team' onClick={this.createTeam} />
             </div>
             </>
@@ -76,7 +76,7 @@ class TeamComp extends React.Component{
             <>
             <div className="info">
                 <div> Team id: {this.state.team.id} | Name: {this.state.team.teamName}</div>
-                <div><ProjectComp/></div>
+                <div><ProjectComp teamId={this.state.team.id}/></div>
                 <div><MemberComp userName={this.store.usrName}/></div>
             </div>
 

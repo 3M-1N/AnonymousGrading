@@ -58,7 +58,7 @@ class UserStore {
             const data = await response.json()
             var found = false
             for (var user of data) {
-                if (user.userName == userName) {
+                if (user.userName === userName) {
                     this.teamId = user.teamId
                     found = true
                     break
