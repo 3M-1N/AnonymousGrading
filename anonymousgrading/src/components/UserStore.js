@@ -57,7 +57,6 @@ class UserStore {
             const response=await fetch(`${SERVER}/users`)
             const data = await response.json()
             var found = false
-            console.log("In userstore")
             for (var user of data) {
                 if (user.userName === userName) {
                     this.teamId = user.teamId
