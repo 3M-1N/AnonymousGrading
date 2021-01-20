@@ -72,8 +72,11 @@ class Project extends React.Component {
                             <div className="proj_name">{this.props.proj.id} {this.props.proj.title}</div>
                             <div className="proj-desc">Description : {this.props.proj.description} </div>
                             <hr/>
-                            <div className="proj-git">git link: {this.props.proj.githubLink} </div>
-                            <div className="proj-vid">vid link : {this.props.proj.linkToVid}</div>
+                            <img className="icon" src="https://cdns.iconmonstr.com/wp-content/assets/preview/2012/240/iconmonstr-github-1.png" alt="git-icon"/>
+                            <a href={this.props.proj.githubLink} className="proj-git">{this.props.proj.githubLink} </a>
+                            <br/>
+                            <img className="icon" src="https://cdn.iconscout.com/icon/free/png-256/youtube-85-226402.png" alt="git-icon"/>
+                            <a href={this.props.proj.linkToVid} className="proj-vid">{this.props.proj.linkToVid}</a>
                 </div> 
             </div>
             :

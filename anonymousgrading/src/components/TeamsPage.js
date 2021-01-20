@@ -6,6 +6,8 @@ import ProjectStore from './ProjectStore'
 import UserStore from './UserStore'
 import Project from './Project'
 import ProjectTeacher from './ProjectTeacher'
+import './styles/TeamComp.css'
+
 
 class ProjectsPage extends Component{ 
     constructor(props){
@@ -48,7 +50,7 @@ class ProjectsPage extends Component{
             </>
             :
             <>
-                <div>All Projects:</div>
+                <div className="page-title">All Projects:</div>
                 <div>
                     {
                     this.state.projects.map(p => <ProjectTeacher proj={p} key={p.id} userName = {this.props.match.params.userName}/>)

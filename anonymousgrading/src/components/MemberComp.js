@@ -33,7 +33,7 @@ class MemberComp extends React.Component{
         return(
             <>
             <div>Members:</div>
-            <ul>{this.memberNames}</ul>
+            <ol>{this.memberNames}</ol>
             </>
         )
     }

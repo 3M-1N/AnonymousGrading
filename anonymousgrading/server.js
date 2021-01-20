@@ -202,6 +202,21 @@ app.get('/users/:userName', async(req,res,next)=>{
   }
 })
 
+// app.get('/users/:usr_id', async(req,res,next)=>{
+//   try { 
+//     const user= await User.findByPk(req.params.usr_id)
+
+//     if(user !== null){
+//         res.status(202).json(user)
+//     }else{
+//         res.status(404).json({message: 'not found'})
+//     }
+//   }
+//   catch(err){
+//     next(err)
+//   }
+// })
+
 
 // projects 
 

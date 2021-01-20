@@ -61,8 +61,6 @@ class TeamComp extends React.Component{
             (this.state.team.id==null) ?
             <>
             <div className="info">
-              <img src="https://www.flaticon.com/svg/vstatic/svg/681/681494.svg?token=exp=1611071722~hmac=3d952880283cb4fa8ae7dc32b19e094a" 
-              alt="team_icon" className="team_icon"/>
                 <div>You are currently not a member of a team!</div>
                 <div>Create a team yourself or wait for invitations from other teams</div>
                 <hr></hr>
@@ -75,8 +73,8 @@ class TeamComp extends React.Component{
             <>
             <div className="info">
                 <div> Team id: {this.state.team.id} | Name: {this.state.team.teamName}</div>
-                <div><ProjectComp teamId={this.state.team.id}/></div>
                 <div><MemberComp userName={this.store.usrName}/></div>
+                <div><ProjectComp teamId={this.state.team.id}/></div>
             </div>
 
             </>

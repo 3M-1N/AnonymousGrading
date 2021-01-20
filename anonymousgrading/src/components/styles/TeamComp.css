@@ -7,7 +7,7 @@
 	background: #f4f7f8;
 	border-radius: 8px;
     font-family: Georgia, "Times New Roman", Times, serif;
-    
+    justify-content: center;
     text-align: center;
 }
 
@@ -66,4 +66,16 @@ input[class="input-btn"] {
 
 input[class="input-btn"]:hover { 
     background: #109177;
+}
+
+
+.page-title { 
+	margin-bottom: 20px;
+	margin-top: 20px;
+	font-size: 3.2rem;
+	color: rgb(255, 170, 11);
+	text-align: center;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	-webkit-text-stroke: 1px black; /* width and color */
+
 }
