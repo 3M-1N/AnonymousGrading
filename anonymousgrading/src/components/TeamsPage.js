@@ -37,8 +37,8 @@ class ProjectsPage extends Component{
 
         this.memberStore.emitter.addListener('GET_MEMBERS_SUCCESS',() => {
             this.state.members.push(this.memberStore.arrayData)
-            console.log("Project" + this.state.projects[0])
-            console.log("Members" + this.state.members[0])
+            console.log("Project " + this.state.projects[0].title)
+            console.log("Members " + this.state.members[0])
             this.setState({})
         })
     }
