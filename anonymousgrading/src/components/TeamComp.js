@@ -53,7 +53,6 @@ class TeamComp extends React.Component{
         this.store.emitter.addListener('GET_TEAM_SUCCESS',()=>this.setState({
             team:this.store.team
         }))
-        console.log(this.store.loggedUser)
         
     }
 

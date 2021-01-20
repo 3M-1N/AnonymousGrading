@@ -3,9 +3,8 @@ nav{
     justify-content: space-around;
     align-items: center;
     min-height: 15vh;
-    background-color: rgb(80, 75, 75);
+    background: linear-gradient(180deg, rgba(0,198,199,0.5) 15%, rgba(35,139,255,1) 50%, rgba(0,198,199,0.5) 85%);
     color: white;
-
 }
 
 
