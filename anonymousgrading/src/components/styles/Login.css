@@ -8,7 +8,7 @@
 
 form { 
     position: relative;
-    width: 30%;
+    width: 25%;
     display: inline-block;
     top: 10%;
     height:auto;
@@ -38,7 +38,8 @@ input[class="input_field"]{
     margin: 8px 0;  
     padding: 12px 20px;   
     display: inline-block;   
-    box-sizing: border-box;   
+    box-sizing: border-box;  
+    max-width: 100%; 
 }  
 
 button:hover {   
@@ -89,10 +90,10 @@ button {
 
 label[class="login_label"] {
     font-size: 25px;
-    color: rgb(29, 143, 143);
+    color: rgb(16, 182, 182);
     outline: none;
+    margin: 0 auto;
     font-family: Kanit;
-    text-shadow: #000 1px 1px 10px;
 }
 
 input[class="input_field"] {

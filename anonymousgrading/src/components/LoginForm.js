@@ -62,9 +62,11 @@ class LoginForm extends Component {
                     <link rel="preconnect" href="https://fonts.gstatic.com"></link>
                     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@500&display=swap" rel="stylesheet"></link>
                     
-                    <label class="login_label">Username : </label>
+                    <label class="login_label">Username: </label>
                     <input class="input_field" type="text" placeholder="Enter Username" name="username" required value={this.state.username} onChange={this.handleChange} />
-                    <label class="login_label">Password : </label>
+                   
+                    <label class="login_label">Password: </label>
+                    
                     <input class="input_field" type="password" placeholder="Enter Password" name="password" required value={this.state.password} onChange={this.handleChange} />
 
                     <div className="buttons_container">
