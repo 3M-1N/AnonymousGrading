@@ -75,8 +75,8 @@ class TeamComp extends React.Component{
             <>
             <div className="info">
                 <div> Team id: {this.state.team.id} | Name: {this.state.team.teamName}</div>
-                <div><ProjectComp teamId={this.state.team.id}/></div>
                 <div><MemberComp userName={this.store.usrName}/></div>
+                <div><ProjectComp teamId={this.state.team.id}/></div>
             </div>
 
             </>

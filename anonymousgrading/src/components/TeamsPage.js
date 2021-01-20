@@ -5,6 +5,8 @@ import MemberStore from './MemberStore'
 import ProjectStore from './ProjectStore'
 import UserStore from './UserStore'
 import Project from './Project'
+import './styles/TeamComp.css'
+
 
 class ProjectsPage extends Component{ 
     constructor(props){
@@ -39,7 +41,7 @@ class ProjectsPage extends Component{
     render() { 
         return (
             <>
-                <div>All Projects:</div>
+                <div className="page-title">All Projects:</div>
                 <div>
                     {
                     this.state.projects.map(p => <Project proj={p} key={p.id} />)

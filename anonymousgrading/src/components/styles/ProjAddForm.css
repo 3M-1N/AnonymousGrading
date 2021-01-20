@@ -7,3 +7,50 @@
 
     display: block;
 }
+
+
+.add-proj-form { 
+	margin:50px auto;
+	border-radius:2px;
+  padding:20px;
+  width: 70%;
+	font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.form_field input, textarea{ 
+  box-sizing: border-box;
+	width: 100%;
+	display: block;
+	outline: 1px solid black;
+	border: none;
+	height: 25px;
+	font-size: 1.2rem;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  max-width: 100%;
+}
+
+#description { 
+  height: 60px;
+  overflow: wrap;
+
+}
+
+.form_field label{
+
+  font-size: 1rem;
+  font-weight:normal;
+  
+}
+
+
+.add-proj-form Button { 
+
+  background: #2471FF;
+	border: none;
+	padding: 10px 20px 10px 20px;
+	border-radius: 5px;
+  color: #D2E2FF;
+  font-weight:bold;
+  
+}

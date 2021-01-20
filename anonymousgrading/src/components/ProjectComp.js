@@ -1,5 +1,6 @@
 import React  from  'react'
 import AddProjectForm from './AddProjectForm'
+import Project from './Project'
 import ProjectStore from './ProjectStore'
 
 class ProjectComp extends React.Component{
@@ -20,8 +21,10 @@ class ProjectComp extends React.Component{
             this.setState({
                 names: this.store.projects
             })
-            this.listNames = this.state.names.map((name) => <li key={name.id}>Title: {name.title} | Description:{name.description}
-            <br></br> Link: {name.githubLink} <br></br> Video: {name.linkToVid}</li>)
+            this.listNames = this.state.names.map(p => <Project proj={p} key={p.id}></Project>)
+
+            // this.listNames = this.state.names.map((name) => <li key={name.id}>Title: {name.title} | Description:{name.description}
+            // <br></br> Link: {name.githubLink} <br></br> Video: {name.linkToVid}</li>)
             console.log(this.state.names)
             console.log(this.listNames)
             this.setState({})

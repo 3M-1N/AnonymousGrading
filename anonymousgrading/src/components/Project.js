@@ -22,8 +22,11 @@ class Project extends React.Component {
                             <div className="proj_name">{proj.title}</div>
                             <div className="proj-desc">Description : {proj.description} </div>
                             <hr/>
-                            <div className="proj-git">git link: {proj.gitLink} </div>
-                            <div className="proj-vid">vid link : {proj.vidLink}</div>
+                            <img className="icon" src="https://cdns.iconmonstr.com/wp-content/assets/preview/2012/240/iconmonstr-github-1.png" alt="git-icon"/>
+                            <a href={proj.githubLink} className="proj-git">{proj.githubLink} </a>
+                            <br/>
+                            <img className="icon" src="https://cdn.iconscout.com/icon/free/png-256/youtube-85-226402.png" alt="git-icon"/>
+                            <a href={proj.linkToVid} className="proj-vid">{proj.linkToVid}</a>
                 </div> 
             </div>
         )

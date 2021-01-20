@@ -3,7 +3,7 @@ nav{
     justify-content: space-around;
     align-items: center;
     min-height: 15vh;
-    background: linear-gradient(180deg, rgba(0,198,199,0.5) 15%, rgba(35,139,255,1) 50%, rgba(0,198,199,0.5) 85%);
+    background: rgb(97, 93, 93);
     color: white;
 }
 
