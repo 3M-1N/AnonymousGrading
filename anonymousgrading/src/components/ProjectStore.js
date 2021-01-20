@@ -91,6 +91,7 @@ class ProjectStore {
       }
     }
 
+<<<<<<< HEAD
     async getIdFromTitle(projTitle) {
       try{
           const response = await fetch(`${SERVER}/projects`)
@@ -110,6 +111,24 @@ class ProjectStore {
           this.emitter.emit('GET_PROJECT_ID_ERROR')
       }
     }
+=======
+
+
+    async getAllProjects () {
+      try {
+        const response = await fetch(`${SERVER}/projects`)
+        const data = await response.json()
+        this.data = data
+        this.emitter.emit('GET_ALL_PROJECTS_SUCCESS')
+      } catch (err) {
+        console.warn(err)
+        this.emitter.emit('GET_ALL_PROJECTS_ERROR')
+      }
+    }
+  
+
+    
+>>>>>>> 49a38f31cd42ba0b47250182520661874bd9ef8e
 
     // async getAllProjects() {
     //   try{

@@ -4,13 +4,14 @@ import CurrentUsrTeamStore from './CurrentUsrTeamStore'
 import MemberStore from './MemberStore'
 import ProjectStore from './ProjectStore'
 import UserStore from './UserStore'
+import Project from './Project'
 
 class ProjectsPage extends Component{ 
     constructor(props){
         super(props)
         this.state={
             projects: [],
-            members: []
+            members: [], 
         }
 
         this.projectStore = new ProjectStore()
@@ -21,32 +22,29 @@ class ProjectsPage extends Component{
     }
 
     componentDidMount() {
-        this.userStore.getUserTeam(window.sessionStorage.getItem("currentUser"))
-        
-        this.userStore.emitter.addListener('GET_USER_TEAM_SUCCESS', () => {
-            this.projectStore.getProjectsForTeam(this.userStore.teamId)
-        })
 
-        this.projectStore.emitter.addListener('GET_TEAM_PROJECTS_SUCCESS',() => {
-            this.setState({
-                projects: this.projectStore.projects
+        this.projectStore.getAllProjects()
+        this.projectStore.emitter.addListener('GET_ALL_PROJECTS_SUCCESS', () => 
+        { 
+            this.setState({ 
+                projects: this.projectStore.data
             })
 
-            this.memberStore.getTeamMembers(this.state.projects[0].teamId)
+            console.log(this.state.projects)
+
         })
 
-        this.memberStore.emitter.addListener('GET_MEMBERS_SUCCESS',() => {
-            this.state.members.push(this.memberStore.arrayData)
-            console.log("Project " + this.state.projects[0].title)
-            console.log("Members " + this.state.members[0])
-            this.setState({})
-        })
     }
 
     render() { 
         return (
             <>
-            <div>All Projects:</div>
+                <div>All Projects:</div>
+                <div>
+                    {
+                    this.state.projects.map(p => <Project proj={p} key={p.id} />)
+                    }
+                </div> 
             </>
         )
 
