@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 import { withRouter } from 'react-router-dom'
+import CurrentUsrTeamStore from './CurrentUsrTeamStore'
 import MemberStore from './MemberStore'
 import ProjectStore from './ProjectStore'
+import UserStore from './UserStore'
 
 class ProjectsPage extends Component{ 
     constructor(props){
@@ -13,23 +15,31 @@ class ProjectsPage extends Component{
 
         this.projectStore = new ProjectStore()
         this.memberStore = new MemberStore()
+        this.userStore = new UserStore()
+        this.projectsElements = []
+        this.membersElements = []
     }
 
     componentDidMount() {
-        this.projectStore.getAllProjects()
-        this.projectStore.emitter.addListener('GET_ALL_PROJECTS_SUCCESS',() => {
+        this.userStore.getUserTeam(window.sessionStorage.getItem("currentUser"))
+        
+        this.userStore.emitter.addListener('GET_USER_TEAM_SUCCESS', () => {
+            this.projectStore.getProjectsForTeam(this.userStore.teamId)
+        })
+
+        this.projectStore.emitter.addListener('GET_TEAM_PROJECTS_SUCCESS',() => {
             this.setState({
                 projects: this.projectStore.projects
             })
-            for (var proj of this.state.projects) {
-                console.log("Getting teammates for: " + proj.teamId)
-                this.memberStore.getTeamMembers(proj.teamId)
-            }
+
+            this.memberStore.getTeamMembers(this.state.projects[0].teamId)
         })
 
         this.memberStore.emitter.addListener('GET_MEMBERS_SUCCESS',() => {
-            this.state.members.push(this.memberStore.data)
-            console.log("Recieved Members! Check to see if they are correct")
+            this.state.members.push(this.memberStore.arrayData)
+            console.log("Project" + this.state.projects[0])
+            console.log("Members" + this.state.members[0])
+            this.setState({})
         })
     }
 

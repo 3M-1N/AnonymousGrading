@@ -35,6 +35,7 @@ class LoginForm extends Component {
 
         this.login=(event)=>{
             this.store.getByUsername(this.state.username)
+            window.sessionStorage.setItem("currentUser", this.state.username)
             // console.log(this.store.user, this.store.pass)
             setTimeout(()=> {if(this.state.username === this.store.user && this.state.password === this.store.pass){
                 this.props.history.push(`/home/${this.state.username}`)
